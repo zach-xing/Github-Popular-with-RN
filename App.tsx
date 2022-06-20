@@ -2,11 +2,12 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Icon } from "@rneui/themed";
+import Icon from "react-native-vector-icons/AntDesign";
 
 import HotHome from "./pages/HotHome";
 import Trend from "./pages/Trend";
 import Profile from "./pages/Profile";
+import Collect from "./pages/Collect";
 
 const Tab = createBottomTabNavigator();
 
@@ -20,7 +21,7 @@ export default function App() {
           options={{
             tabBarLabel: "最热",
             tabBarIcon: ({ color, size }) => (
-              <Icon name="sc-telegram" type="evilicon" />
+              <Icon name="iconfontdesktop" color={color} size={size} />
             ),
           }}
         />
@@ -30,7 +31,17 @@ export default function App() {
           options={{
             tabBarLabel: "趋势",
             tabBarIcon: ({ color, size }) => (
-              <Icon name="sc-telegram" type="evilicon" />
+              <Icon name="linechart" color={color} size={size} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="收藏"
+          component={Collect}
+          options={{
+            tabBarLabel: "收藏",
+            tabBarIcon: ({ color, size }) => (
+              <Icon name="hearto" color={color} size={size} />
             ),
           }}
         />
@@ -40,7 +51,7 @@ export default function App() {
           options={{
             tabBarLabel: "我的",
             tabBarIcon: ({ color, size }) => (
-              <Icon name="sc-telegram" type="evilicon" />
+              <Icon name="user" color={color} size={size} />
             ),
           }}
         />
