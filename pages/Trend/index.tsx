@@ -13,7 +13,7 @@ const Trend = () => {
     "daily" | "weekly" | "monthly"
   >("daily");
   const [index, setIndex] = React.useState(0);
-  const [tabText, setTabText] = React.useState<string[]>(["a", "b", "c"]);
+  const [tabText, setTabText] = React.useState<string[]>([]);
 
   React.useEffect(() => {
     (async () => {
