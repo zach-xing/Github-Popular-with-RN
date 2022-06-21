@@ -9,3 +9,4 @@
 - React Native Elements（yarn add @rneui/themed @rneui/base）
 - react-navigation（[相关链接](https://reactnative.dev/docs/navigation#react-navigation)）
 - Async Storage（[相关链接](https://react-native-async-storage.github.io/async-storage/)）
+- react-native-modal-dropdown（[相关链接](https://github.com/sohobloo/react-native-modal-dropdown)）
