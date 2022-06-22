@@ -24,7 +24,7 @@ const ScrollView: React.FC<IProps> = (props) => {
   }
 
   // 刷新
-  const refreshList = () => {
+  const refreshList = async () => {
     setRefresh(true);
     refetchPopularRepos(() => setRefresh(false));
   };

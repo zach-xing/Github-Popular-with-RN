@@ -14,7 +14,7 @@ const HotHome = () => {
     (async () => {
       let tabs = await getAsyncItem();
       if (tabs === null) {
-        tabs = ["All", "React", "React Native", "TypeScript"]; // 默认的 tabs 显示的内容
+        tabs = ["All", "React", "React Native"]; // 默认的 tabs 显示的内容
         setAsyncItem(tabs);
       }
       setTabText(tabs);
