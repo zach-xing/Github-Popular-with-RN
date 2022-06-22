@@ -3,6 +3,7 @@ import React from "react";
 import { ListItem, Image } from "@rneui/themed";
 import Icon from "react-native-vector-icons/AntDesign";
 import { useFetchTrend } from "../../api/trend";
+import useStorage from "../../utils/storage";
 
 interface IProps {
   language: string;
@@ -15,10 +16,19 @@ const ScrollView: React.FC<IProps> = (props) => {
     props.language,
     props.timespan
   );
+  const {
+    setAsyncItem: setAsyncItemWithTrendingData,
+    getAsyncItem: getAsyncItemWithTrendingData,
+  } = useStorage<any[]>("trending-data", []);
 
   if (isLoading) {
     return <Text>Loading...</Text>;
   }
+
+  const pressIcon = async (val: any) => {
+    const arr = await getAsyncItemWithTrendingData();
+    await setAsyncItemWithTrendingData([...new Set([val, ...arr!])]);
+  };
 
   return (
     <View>
@@ -57,7 +67,12 @@ const ScrollView: React.FC<IProps> = (props) => {
                     ))}
                   </View>
 
-                  <Icon name="staro" color={"black"} size={25} />
+                  <Icon
+                    name="staro"
+                    color={"black"}
+                    size={25}
+                    onPress={() => pressIcon(item)}
+                  />
                 </View>
               </ListItem.Content>
             </ListItem>

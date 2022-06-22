@@ -3,6 +3,7 @@ import { Text, ListItem } from "@rneui/themed";
 import Icon from "react-native-vector-icons/AntDesign";
 import React from "react";
 import { useFetchPopularRepos } from "../../api/hotHome";
+import useStorage from "../../utils/storage";
 
 interface IProps {
   value: string;
@@ -13,6 +14,10 @@ const ScrollView: React.FC<IProps> = (props) => {
     props.value
   );
   const [refresh, setRefresh] = React.useState(false);
+  const {
+    setAsyncItem: setAsyncItemWithHotData,
+    getAsyncItem: getAsyncItemWithHotData,
+  } = useStorage<any[]>("hot-data", []);
 
   if (isLoading) {
     return (
@@ -26,6 +31,12 @@ const ScrollView: React.FC<IProps> = (props) => {
   const refreshList = () => {
     setRefresh(true);
     refetchPopularRepos(() => setRefresh(false));
+  };
+
+  const pressIcon = async (val: any) => {
+    const arr = await getAsyncItemWithHotData();
+    console.log(arr, val);
+    await setAsyncItemWithHotData([...new Set([val, ...arr!])]);
   };
 
   return (
@@ -53,7 +64,12 @@ const ScrollView: React.FC<IProps> = (props) => {
                 </View>
                 {/* 收藏 action */}
                 <View>
-                  <Icon name="staro" color={"black"} size={25} />
+                  <Icon
+                    name="staro"
+                    color={"black"}
+                    size={25}
+                    onPress={() => pressIcon(item)}
+                  />
                 </View>
               </View>
             </ListItem.Content>

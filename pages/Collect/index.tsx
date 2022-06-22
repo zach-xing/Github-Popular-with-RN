@@ -2,7 +2,8 @@ import { StyleSheet, View } from "react-native";
 import React from "react";
 import { Tab, Text, TabView } from "@rneui/themed";
 
-import ScrollView from "./ScrollView";
+import ScrollViewWithHotTab from "./ScrollViewWithHotTab";
+import ScrollViewWithTrendTab from "./ScrollViewWithTrendTab";
 
 const Collect = () => {
   const [index, setIndex] = React.useState(0);
@@ -24,10 +25,10 @@ const Collect = () => {
 
       <TabView value={index} onChange={setIndex} animationType="spring">
         <TabView.Item style={{ width: "100%" }}>
-          <ScrollView />
+          <ScrollViewWithHotTab />
         </TabView.Item>
         <TabView.Item style={{ width: "100%" }}>
-          <Text h1>Cart</Text>
+          <ScrollViewWithTrendTab />
         </TabView.Item>
       </TabView>
     </>
