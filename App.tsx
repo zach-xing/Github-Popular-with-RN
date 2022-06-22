@@ -52,6 +52,7 @@ export default function App() {
             name="我的"
             component={Profile}
             options={{
+              header: () => null,
               tabBarLabel: "我的",
               tabBarIcon: ({ color, size }) => (
                 <Icon name="user" color={color} size={size} />
