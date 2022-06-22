@@ -1,6 +1,6 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import React from "react";
-import { Tab, Text, TabView } from "@rneui/themed";
+import { Tab, TabView } from "@rneui/themed";
 
 import ScrollViewWithHotTab from "./ScrollViewWithHotTab";
 import ScrollViewWithTrendTab from "./ScrollViewWithTrendTab";

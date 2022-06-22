@@ -15,7 +15,6 @@ const HotScrollViewItem: React.FC<API.HotDataItem> = (props) => {
 
   const pressIcon = async (val: any) => {
     const arr = await getAsyncItemWithHotData();
-    console.log(arr, val);
     await setAsyncItemWithHotData([...new Set([val, ...arr!])]);
   };
 

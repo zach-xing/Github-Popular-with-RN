@@ -1,20 +1,40 @@
-import { View, Text } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import React from "react";
 import useStorage from "../../utils/storage";
 
+import HotScrollViewItem from "../../components/HotScrollViewItem";
+
 const ScrollViewWithHotTab = () => {
-  const { getAsyncItem: getAsyncItemWithHotTab } = useStorage("hot-data");
+  const [showLoading, setShowLoading] = React.useState(false);
+  const [collectedArr, setCollectedArr] = React.useState<
+    Array<API.HotDataItem>
+  >([]);
+  const { getAsyncItem: getAsyncItemWithHotTab } =
+    useStorage<Array<API.HotDataItem>>("hot-data");
 
   React.useEffect(() => {
     (async () => {
-      const hotTabData = await getAsyncItemWithHotTab();
-      console.log(hotTabData, "1");
+      await refetch();
     })();
-  }, [1]);
+  }, []);
+
+  // 重新获取已收藏的数据
+  const refetch = async () => {
+    setShowLoading(true);
+    const hotTabData = await getAsyncItemWithHotTab();
+    setCollectedArr(hotTabData!);
+    setShowLoading(false);
+  };
 
   return (
     <View>
-      <Text>ScrollViewWithHotTab</Text>
+      <FlatList
+        keyExtractor={(item, index) => index.toString()}
+        data={collectedArr}
+        refreshing={showLoading}
+        onRefresh={refetch}
+        renderItem={({ item }) => <HotScrollViewItem key={item.id} {...item} />}
+      />
     </View>
   );
 };
