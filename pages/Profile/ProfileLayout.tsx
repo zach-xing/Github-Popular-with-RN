@@ -25,7 +25,7 @@ const ProfileLayout = ({ navigation, route }: any) => {
               color={"black"}
               size={30}
             />
-            <Text>Github</Text>
+            <Text style={{ fontSize: 16 }}>Github</Text>
           </View>
           <Icon
             name="right"
