@@ -35,7 +35,13 @@ const ScrollView: React.FC<IProps> = (props) => {
         keyExtractor={(item, index) => index.toString()}
         data={repoData!.items}
         refreshing={refresh}
-        renderItem={({ item }) => <HotScrollViewItem key={item.id} {...item} />}
+        renderItem={({ item }) => (
+          <HotScrollViewItem
+            collectionStatus={"collection"}
+            key={item.id}
+            {...item}
+          />
+        )}
         onRefresh={refreshList}
       />
     </View>

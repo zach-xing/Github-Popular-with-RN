@@ -27,7 +27,11 @@ const ScrollView: React.FC<IProps> = (props) => {
         refreshing={showLoading}
         onRefresh={refetch}
         renderItem={({ item }) => (
-          <TrendScrollViewItem key={item.rank} {...item} />
+          <TrendScrollViewItem
+            collectionStatus={"collection"}
+            key={item.rank}
+            {...item}
+          />
         )}
       />
     </View>

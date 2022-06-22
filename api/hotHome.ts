@@ -33,8 +33,10 @@ export function useFetchPopularRepos(value: string) {
    * 刷新操作
    * @param callback 执行刷新完成之后的回调
    */
-  const refetchPopularRepos = (callback: Function) => {
-    callback(); // 执行回调
+  const refetchPopularRepos = (callback?: Function) => {
+    if (callback !== undefined) {
+      callback(); // 执行回调
+    }
     refetch();
   };
 

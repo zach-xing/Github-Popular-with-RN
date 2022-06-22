@@ -33,7 +33,14 @@ const ScrollViewWithHotTab = () => {
         data={collectedArr}
         refreshing={showLoading}
         onRefresh={refetch}
-        renderItem={({ item }) => <HotScrollViewItem key={item.id} {...item} />}
+        renderItem={({ item }) => (
+          <HotScrollViewItem
+            refresh={refetch}
+            collectionStatus={"no-collection"}
+            key={item.id}
+            {...item}
+          />
+        )}
       />
     </View>
   );

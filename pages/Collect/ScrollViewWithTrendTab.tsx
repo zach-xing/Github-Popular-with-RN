@@ -33,7 +33,12 @@ const ScrollViewWithTrendTab = () => {
         refreshing={showLoading}
         onRefresh={refetch}
         renderItem={({ item }) => (
-          <TrendScrollViewItem key={item.rank} {...item} />
+          <TrendScrollViewItem
+            refresh={refetch}
+            collectionStatus={"no-collection"}
+            key={item.rank}
+            {...item}
+          />
         )}
       />
     </View>
