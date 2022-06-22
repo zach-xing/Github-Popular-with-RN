@@ -17,21 +17,7 @@ function fetchTrend(language: string, timespan: TimeSpanType) {
  */
 export function useFetchTrend(language: string, timespan: TimeSpanType) {
   const { data, error, isLoading, refetch } = useQuery<
-    Array<{
-      rank: number;
-      username: string;
-      repositoryName: string;
-      url: string;
-      description: string;
-      language: string;
-      languageColor: string;
-      totalStars: number;
-      builtBy: Array<{
-        username: string;
-        url: string;
-        avatar: string;
-      }>;
-    }>
+    Array<API.TrendDataItem>
   >(
     `${language.toLowerCase()}-${timespan}`,
     () => fetchTrend(language, timespan),
