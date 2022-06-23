@@ -26,8 +26,9 @@ const CustomHotTab = () => {
       setCheckedTabs(arr);
     } else {
       // 反之就是要选中
-      setCheckedTabs([...checkedTabs, val]);
-      await setAsyncItem([...checkedTabs, val]);
+      const arr = [...checkedTabs, val].sort();
+      setCheckedTabs(arr);
+      await setAsyncItem(arr);
     }
   };
 

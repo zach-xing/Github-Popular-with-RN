@@ -26,6 +26,7 @@ export default function App() {
               tabBarIcon: ({ color, size }) => (
                 <Icon name="iconfontdesktop" color={color} size={size} />
               ),
+              unmountOnBlur: true,
             }}
           />
           <Tab.Screen
@@ -36,6 +37,7 @@ export default function App() {
               tabBarIcon: ({ color, size }) => (
                 <Icon name="linechart" color={color} size={size} />
               ),
+              unmountOnBlur: true,
             }}
           />
           <Tab.Screen
@@ -46,6 +48,7 @@ export default function App() {
               tabBarIcon: ({ color, size }) => (
                 <Icon name="hearto" color={color} size={size} />
               ),
+              unmountOnBlur: true,
             }}
           />
           <Tab.Screen
@@ -57,6 +60,7 @@ export default function App() {
               tabBarIcon: ({ color, size }) => (
                 <Icon name="user" color={color} size={size} />
               ),
+              unmountOnBlur: true,
             }}
           />
         </Tab.Navigator>
