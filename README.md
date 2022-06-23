@@ -21,7 +21,7 @@
 
 - “仓库详情”子页面
 
-<img src="./docs/imgs/repo-detail.jpg" style="zoom:33%;" />
+<img src="./docs/imgs/repo-detail.jpg" style="width:33%;" />
 
 - “趋势”页面
 
