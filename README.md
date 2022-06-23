@@ -19,6 +19,10 @@
 | ![“最热”页面](./docs/imgs/hot-home1.jpg) | ![点击收藏后](./docs/imgs/hot-home2.jpg) | ![重复点击收藏后](./docs/imgs/hot-home3.jpg) |
 | ---------------------------------------- | ---------------------------------------- | -------------------------------------------- |
 
+- “仓库详情”子页面
+
+<img src="./docs/imgs/repo-detail.jpg" style="zoom:33%;" />
+
 - “趋势”页面
 
 | ![“趋势”页面](./docs/imgs/trend1.jpg) | ![切换时间](./docs/imgs/trend2.jpg) |
