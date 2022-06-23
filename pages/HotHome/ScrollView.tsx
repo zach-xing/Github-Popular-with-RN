@@ -10,9 +10,8 @@ interface IProps {
 }
 
 const ScrollView: React.FC<IProps> = (props) => {
-  const { repoData, isLoading, refetchPopularRepos } = useFetchPopularRepos(
-    props.value
-  );
+  const { repoData, isLoading, refetchPopularRepos, error } =
+    useFetchPopularRepos(props.value);
   const [refresh, setRefresh] = React.useState(false);
 
   if (isLoading) {
@@ -23,6 +22,13 @@ const ScrollView: React.FC<IProps> = (props) => {
     );
   }
 
+  if (error) {
+    return (
+      <View>
+        <Text>加载失败</Text>
+      </View>
+    );
+  }
   // 刷新
   const refreshList = async () => {
     setRefresh(true);

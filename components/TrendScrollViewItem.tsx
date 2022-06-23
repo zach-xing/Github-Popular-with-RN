@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, Alert, Button } from "react-native";
 import React from "react";
 import { ListItem, Image } from "@rneui/themed";
 import useStorage from "../utils/storage";
+import { useNavigation } from "@react-navigation/native";
 
 type IProps = {
   [k in keyof API.TrendDataItem]: API.TrendDataItem[k];
@@ -14,6 +15,7 @@ type IProps = {
  * “最热”页面的滚动 item
  */
 const TrendScrollViewItem: React.FC<IProps> = (props) => {
+  const { navigate } = useNavigation();
   const {
     setAsyncItem: setAsyncItemWithTrendingData,
     getAsyncItem: getAsyncItemWithTrendingData,
@@ -51,10 +53,22 @@ const TrendScrollViewItem: React.FC<IProps> = (props) => {
     }
   };
 
+  const jumpToRepoDetails = (name: string, repoName: string) => {
+    navigate({
+      name: "repo-details",
+      params: { repoName: `${name}/${repoName}` },
+    } as any);
+  };
+
   return (
     <ListItem key={props.rank} bottomDivider>
       <ListItem.Content>
-        <ListItem.Title style={{ fontWeight: "bold" }}>
+        <ListItem.Title
+          style={{ fontWeight: "bold" }}
+          onPress={() =>
+            jumpToRepoDetails(props.username, props.repositoryName)
+          }
+        >
           {props.repositoryName}
         </ListItem.Title>
         <ListItem.Subtitle>{props.description}</ListItem.Subtitle>

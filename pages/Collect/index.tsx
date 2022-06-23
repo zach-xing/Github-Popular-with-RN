@@ -1,40 +1,25 @@
-import { StyleSheet } from "react-native";
 import React from "react";
-import { Tab, TabView } from "@rneui/themed";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import CollectPage from "./CollectPage";
+import RepoDetails from "../RepoDetails";
 
-import ScrollViewWithHotTab from "./ScrollViewWithHotTab";
-import ScrollViewWithTrendTab from "./ScrollViewWithTrendTab";
+const Stack = createNativeStackNavigator();
 
 const Collect = () => {
-  const [index, setIndex] = React.useState(0);
-
   return (
-    <>
-      <Tab
-        value={index}
-        onChange={(e) => setIndex(e)}
-        indicatorStyle={{
-          backgroundColor: "white",
-          height: 1,
-        }}
-        variant="primary"
-      >
-        <Tab.Item title="最热" titleStyle={{ fontSize: 12 }} />
-        <Tab.Item title="趋势" titleStyle={{ fontSize: 12 }} />
-      </Tab>
-
-      <TabView value={index} onChange={setIndex} animationType="spring">
-        <TabView.Item style={{ width: "100%" }}>
-          <ScrollViewWithHotTab />
-        </TabView.Item>
-        <TabView.Item style={{ width: "100%" }}>
-          <ScrollViewWithTrendTab />
-        </TabView.Item>
-      </TabView>
-    </>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="collect-page"
+        component={CollectPage}
+        options={{ title: "收藏" }}
+      />
+      <Stack.Screen
+        name="repo-details"
+        component={RepoDetails}
+        options={{ title: "仓库详情" }}
+      />
+    </Stack.Navigator>
   );
 };
 
 export default Collect;
-
-const styles = StyleSheet.create({});

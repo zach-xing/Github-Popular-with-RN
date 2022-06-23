@@ -1,4 +1,3 @@
-import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/AntDesign";
@@ -22,6 +21,7 @@ export default function App() {
             name="最热"
             component={HotHome}
             options={{
+              header: () => null,
               tabBarLabel: "最热",
               tabBarIcon: ({ color, size }) => (
                 <Icon name="iconfontdesktop" color={color} size={size} />
@@ -33,6 +33,7 @@ export default function App() {
             name="趋势"
             component={Trend}
             options={{
+              header: () => null,
               tabBarLabel: "趋势",
               tabBarIcon: ({ color, size }) => (
                 <Icon name="linechart" color={color} size={size} />
@@ -44,6 +45,7 @@ export default function App() {
             name="收藏"
             component={Collect}
             options={{
+              header: () => null,
               tabBarLabel: "收藏",
               tabBarIcon: ({ color, size }) => (
                 <Icon name="hearto" color={color} size={size} />
@@ -68,12 +70,3 @@ export default function App() {
     </QueryClientProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, Alert, Button } from "react-native";
 import React from "react";
 import { ListItem, Image } from "@rneui/themed";
+import { useNavigation } from "@react-navigation/native";
 import useStorage from "../utils/storage";
 
 type IProps = {
@@ -14,6 +15,7 @@ type IProps = {
  * “最热”页面的滚动 item
  */
 const HotScrollViewItem: React.FC<IProps> = (props) => {
+  const { navigate } = useNavigation();
   const {
     setAsyncItem: setAsyncItemWithHotData,
     getAsyncItem: getAsyncItemWithHotData,
@@ -50,11 +52,17 @@ const HotScrollViewItem: React.FC<IProps> = (props) => {
     }
   };
 
+  const jumpToRepoDetails = (repo: string) => {
+    navigate({ name: "repo-details", params: { repoName: repo } } as any);
+  };
+
   return (
     <>
       <ListItem key={props.id} bottomDivider>
         <ListItem.Content>
-          <ListItem.Title>{props.full_name}</ListItem.Title>
+          <ListItem.Title onPress={() => jumpToRepoDetails(props.full_name)}>
+            {props.full_name}
+          </ListItem.Title>
           <ListItem.Subtitle>{props.description}</ListItem.Subtitle>
           <View style={styles.repoItemStyle}>
             {/* 作者的头像 */}
