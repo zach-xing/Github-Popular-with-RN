@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Github-Popular-with-RN",
+    "name": "Github-Popular",
     "slug": "Github-Popular-with-RN",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -22,9 +22,10 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.zeekg.GithubPopularwithRN"
     },
     "web": {
       "favicon": "./assets/favicon.png"
